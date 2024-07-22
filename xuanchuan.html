@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业宣传</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            background-color:#DCF3FA ;
+        }
+        .aside {
+        float: left;
+        height: 160px;
+        width: 100px;
+        background-color: rgb(226, 11, 11);
+        }
+       .item {
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        text-align: center;
+       }
+       .active {
+        transition: all .5s;
+        background-color: darkred;
+        color:white;
+       }
+       .active:hover {
+        box-shadow: 0 5px 5px 0 gray;
+        transform: translate(0, -5px);
+       }
+       .content {
+        margin: 0 200px 0 200px;
+       }
+       .content1 {
+        margin: 50px auto;
+        margin-top: 50px;
+       }
+       .content2 {
+        margin: 50px auto;
+        margin-top: 50px;
+       }
+       .content3 {
+        margin: 50px auto;
+        margin-top: 50px;
+       }
+       .content4 {
+        margin: 50px auto;
+        margin-top: 50px;
+       }
+       .img1{
+        width: 1000px;
+        height: 2000px;
+       }
+    </style>
+</head>
+<body>
+    <div class="aside">
+        <div class="item active">探索美丽景点</div>
+        <div class="item">国家级风景区</div>
+        <div class="item">环岛路风光</div>
+        <div class="item">长城</div>
+    </div>
+    <div class="content">
+        <div class="content1">
+            <img src="../github上传1/5.png">
+        </div>
+        <div class="content2"><img src="../images/2.jpg"></div>
+        <div class="content3"><img src="../images/3.jpg"></div>
+        <div class="content4"><img src="../images/4.jpg"></div>
+    </div>
+    <script>
+        let items = document.querySelectorAll('.item')
+        let content = document.querySelector('.content')
+        let aside = document.querySelector('.aside')
+        for(let i = 0; i < items.length; i++){
+          items[i].addEventListener('mouseenter',function(){
+            document.querySelector('.item.active').classList.remove('active')
+            this.classList.add('active')
+          })
+          items[i].addEventListener('click',function(){
+            //顶部到当前的可见距离
+            //offsetTop则返回该子元素相对于其offsetParent元素顶部的距离
+            document.documentElement.scrollTop = content.children[i].offsetTop
+            aside.style.marginTop = content.children[i].offsetTop + 'px'
+            })
+        }
+    </script>
+</body>
+</html>
